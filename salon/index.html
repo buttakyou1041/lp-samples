@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hair salon KOMOREBI | 自由が丘の美容室</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #FAF9F7;
+            --color-sage: #9CAF88;
+            --color-sage-light: #E8EDE4;
+            --color-sage-dark: #6B8B5B;
+            --color-charcoal: #2D2D2D;
+            --color-warm-gray: #7A7574;
+            --color-cream: #F5F0E8;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Noto Sans JP', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg);
+            color: var(--color-charcoal);
+            font-weight: 300;
+            line-height: 1.9;
+            font-size: 15px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.25rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(250, 249, 247, 0.97);
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--color-charcoal);
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+        }
+
+        .logo-text {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-decoration: none;
+            color: var(--color-warm-gray);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-sage-dark);
+        }
+
+        .nav-cta {
+            padding: 0.6rem 1.5rem;
+            background: var(--color-sage);
+            color: white;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-sage-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 3rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            color: var(--color-sage);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 400;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--color-sage-dark);
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            color: var(--color-warm-gray);
+            margin-bottom: 2.5rem;
+            max-width: 450px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--color-sage);
+            color: white;
+            border: 1px solid var(--color-sage);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-sage-dark);
+            border-color: var(--color-sage-dark);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-charcoal);
+            border: 1px solid var(--color-charcoal);
+        }
+
+        .btn-outline:hover {
+            background: var(--color-charcoal);
+            color: white;
+        }
+
+        .hero-visual {
+            position: absolute;
+            right: -5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 55%;
+            height: 80%;
+            background: linear-gradient(135deg, var(--color-sage-light) 0%, var(--color-cream) 100%);
+            border-radius: 300px 0 0 300px;
+            opacity: 0.7;
+        }
+
+        .hero-leaf {
+            position: absolute;
+            opacity: 0.15;
+        }
+
+        .hero-leaf-1 {
+            top: 15%;
+            right: 20%;
+            width: 120px;
+            transform: rotate(-20deg);
+        }
+
+        .hero-leaf-2 {
+            bottom: 20%;
+            right: 35%;
+            width: 80px;
+            transform: rotate(30deg);
+        }
+
+        /* Section Common */
+        section {
+            padding: 7rem 3rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            color: var(--color-sage);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 400;
+        }
+
+        .section-title em {
+            font-style: italic;
+        }
+
+        /* Stylists Section */
+        .stylists {
+            background: var(--color-cream);
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+            color: var(--color-warm-gray);
+        }
+
+        .stylists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stylist-card {
+            background: white;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stylist-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--color-sage);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .stylist-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .stylist-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .stylist-photo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-sage-light) 0%, var(--color-cream) 100%);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--color-sage-dark);
+        }
+
+        .stylist-name {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 0.25rem;
+        }
+
+        .stylist-name-jp {
+            font-size: 0.8rem;
+            color: var(--color-warm-gray);
+            margin-bottom: 1rem;
+        }
+
+        .stylist-specialty {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--color-sage-light);
+            color: var(--color-sage-dark);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .stylist-desc {
+            font-size: 0.85rem;
+            color: var(--color-warm-gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .stylist-link {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            color: var(--color-sage-dark);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stylist-link:hover {
+            color: var(--color-charcoal);
+        }
+
+        /* Menu Section */
+        .menu {
+            background: white;
+        }
+
+        .menu-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .menu-category {
+            margin-bottom: 3rem;
+        }
+
+        .menu-category-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 400;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--color-sage-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--color-sage-light);
+        }
+
+        .menu-item-info {
+            flex: 1;
+        }
+
+        .menu-item-name {
+            font-weight: 400;
+            margin-bottom: 0.25rem;
+        }
+
+        .menu-item-desc {
+            font-size: 0.8rem;
+            color: var(--color-warm-gray);
+        }
+
+        .menu-item-price {
+            color: var(--color-sage-dark);
+            font-weight: 400;
+            white-space: nowrap;
+            margin-left: 2rem;
+        }
+
+        /* Access Section */
+        .access {
+            background: var(--color-cream);
+        }
+
+        .access-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .access-map {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--color-sage-light) 0%, white 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--color-warm-gray);
+        }
+
+        .access-info {
+            padding: 2rem 0;
+        }
+
+        .access-name {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            margin-bottom: 2rem;
+        }
+
+        .access-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .access-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            color: var(--color-sage);
+            margin-bottom: 0.4rem;
+        }
+
+        .access-text {
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--color-charcoal);
+            color: white;
+        }
+
+        .contact .section-label {
+            color: var(--color-sage);
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact-form {
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+            color: var(--color-sage);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--color-sage);
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239CAF88' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+        }
+
+        .form-group select option {
+            background: var(--color-charcoal);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--color-sage);
+            color: white;
+            border: none;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: var(--color-sage-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-charcoal);
+            color: rgba(255,255,255,0.5);
+            padding: 2rem 3rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-copy {
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .access-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero {
+                padding: 7rem 1.5rem 3rem;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">
+            <svg class="logo-icon" viewBox="0 0 40 40">
+                <circle cx="20" cy="20" r="18" fill="none" stroke="var(--color-sage)" stroke-width="1"/>
+                <path d="M12 28 Q20 10 28 28" fill="none" stroke="var(--color-sage)" stroke-width="1.5"/>
+                <circle cx="20" cy="18" r="3" fill="var(--color-sage)"/>
+            </svg>
+            <span class="logo-text">KOMOREBI</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#stylists">STYLISTS</a></li>
+            <li><a href="#menu">MENU</a></li>
+            <li><a href="#access">ACCESS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">RESERVATION</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-visual"></div>
+        
+        <svg class="hero-leaf hero-leaf-1" viewBox="0 0 100 150">
+            <path d="M50 0 Q80 50 50 150 Q20 50 50 0" fill="var(--color-sage)"/>
+            <path d="M50 20 L50 130" stroke="var(--color-sage-dark)" stroke-width="1" fill="none"/>
+        </svg>
+        
+        <svg class="hero-leaf hero-leaf-2" viewBox="0 0 100 150">
+            <path d="M50 0 Q80 50 50 150 Q20 50 50 0" fill="var(--color-sage)"/>
+        </svg>
+
+        <div class="hero-content">
+            <p class="hero-label">HAIR SALON IN JIYUGAOKA</p>
+            <h1 class="hero-title">
+                あなたの<em>"なりたい"</em>を<br>
+                叶える、5人のスタイリスト
+            </h1>
+            <p class="hero-desc">
+                木漏れ日のような穏やかな空間で、あなただけの時間を。
+                一人ひとりの個性と向き合い、最高の一歩を一緒に見つけます。
+            </p>
+            <div class="hero-actions">
+                <a href="#stylists" class="btn btn-primary">スタイリストを見る</a>
+                <a href="#contact" class="btn btn-outline">予約する</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="stylists" class="stylists">
+        <div class="section-header">
+            <p class="section-label">OUR TEAM</p>
+            <h2 class="section-title">Stylists</h2>
+        </div>
+
+        <p class="section-intro">
+            5人のスタイリストが、それぞれの得意分野であなたの魅力を引き出します。<br>
+            気になるスタイリストを見つけて、指名予約してください。
+        </p>
+
+        <div class="stylists-grid">
+            <div class="stylist-card">
+                <div class="stylist-photo">YA</div>
+                <h3 class="stylist-name">Yuki Aoyama</h3>
+                <p class="stylist-name-jp">青山 優希｜オーナー</p>
+                <span class="stylist-specialty">大人のショートヘア</span>
+                <p class="stylist-desc">
+                    骨格を活かしたショートスタイルが得意。
+                    "切りたてが一番似合う"を追求しています。
+                </p>
+                <a href="#contact" class="stylist-link">このスタイリストで予約 →</a>
+            </div>
+
+            <div class="stylist-card">
+                <div class="stylist-photo">MK</div>
+                <h3 class="stylist-name">Mika Kobayashi</h3>
+                <p class="stylist-name-jp">小林 美香</p>
+                <span class="stylist-specialty">ハイトーンカラー</span>
+                <p class="stylist-desc">
+                    ダメージレスなブリーチ技術に定評あり。
+                    透明感のある外国人風カラーはお任せください。
+                </p>
+                <a href="#contact" class="stylist-link">このスタイリストで予約 →</a>
+            </div>
+
+            <div class="stylist-card">
+                <div class="stylist-photo">TN</div>
+                <h3 class="stylist-name">Takeshi Nakamura</h3>
+                <p class="stylist-name-jp">中村 健</p>
+                <span class="stylist-specialty">メンズスタイル</span>
+                <p class="stylist-desc">
+                    ビジネスからカジュアルまで、男性の魅力を引き出す
+                    スタイル提案が得意です。
+                </p>
+                <a href="#contact" class="stylist-link">このスタイリストで予約 →</a>
+            </div>
+
+            <div class="stylist-card">
+                <div class="stylist-photo">RS</div>
+                <h3 class="stylist-name">Rina Suzuki</h3>
+                <p class="stylist-name-jp">鈴木 里奈</p>
+                <span class="stylist-specialty">パーマ・ウェーブ</span>
+                <p class="stylist-desc">
+                    デジタルパーマからエアウェーブまで。
+                    朝のスタイリングが楽になるパーマをご提案します。
+                </p>
+                <a href="#contact" class="stylist-link">このスタイリストで予約 →</a>
+            </div>
+
+            <div class="stylist-card">
+                <div class="stylist-photo">AW</div>
+                <h3 class="stylist-name">Ayaka Watanabe</h3>
+                <p class="stylist-name-jp">渡辺 彩花</p>
+                <span class="stylist-specialty">ナチュラルロング</span>
+                <p class="stylist-desc">
+                    髪質改善トリートメントとツヤ髪ケアのスペシャリスト。
+                    健康的な美しさを大切にしています。
+                </p>
+                <a href="#contact" class="stylist-link">このスタイリストで予約 →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="menu">
+        <div class="section-header">
+            <p class="section-label">PRICE LIST</p>
+            <h2 class="section-title">Menu</h2>
+        </div>
+
+        <div class="menu-list">
+            <div class="menu-category">
+                <h3 class="menu-category-title">CUT</h3>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <p class="menu-item-name">カット</p>
+                        <p class="menu-item-desc">シャンプー・ブロー込み</p>
+                    </div>
+                    <p class="menu-item-price">¥6,600</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <p class="menu-item-name">メンズカット</p>
+                        <p class="menu-item-desc">シャンプー・ブロー込み</p>
+                    </div>
+                    <p class="menu-item-price">¥5,500</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <p class="menu-item-name">前髪カット</p>
+                    </div>
+                    <p class="menu-item-price">¥1,100</p>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3 class="menu-category-title">COLOR</h3>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <p class="menu-item-name">ワンカラー</p>
+                        <p class="menu-item-desc">リタッチ〜フルカラー</p>
+                    </div>
+                    <p class="menu-item-price">¥7,700〜</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <p class="menu-item-name">ハイライト</p>
+                    </div>
+                    <p class="menu-item-price">¥5,500〜</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <p class="menu-item-name">ブリーチカラー</p>
+                        <p class="menu-item-desc">ブリーチ1回＋オンカラー</p>
+                    </div>
+                    <p class="menu-item-price">¥15,400〜</p>
+                </div>
+            </div>
+
+            <div class="menu-category">
+                <h3 class="menu-category-title">PERM / TREATMENT</h3>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <p class="menu-item-name">パーマ</p>
+                        <p class="menu-item-desc">カット込み</p>
+                    </div>
+                    <p class="menu-item-price">¥13,200〜</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-info">
+                        <p class="menu-item-name">髪質改善トリートメント</p>
+                    </div>
+                    <p class="menu-item-price">¥8,800〜</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="access" class="access">
+        <div class="section-header">
+            <p class="section-label">SHOP INFO</p>
+            <h2 class="section-title">Access</h2>
+        </div>
+
+        <div class="access-grid">
+            <div class="access-map">[ Google Map ]</div>
+            <div class="access-info">
+                <h3 class="access-name">hair salon KOMOREBI</h3>
+                
+                <div class="access-item">
+                    <p class="access-label">ADDRESS</p>
+                    <p class="access-text">〒152-0035<br>東京都目黒区自由が丘2-1-1 〇〇ビル 2F</p>
+                </div>
+                
+                <div class="access-item">
+                    <p class="access-label">OPEN</p>
+                    <p class="access-text">10:00 - 20:00（最終受付 カット19:00 / カラー・パーマ18:00）</p>
+                </div>
+                
+                <div class="access-item">
+                    <p class="access-label">CLOSE</p>
+                    <p class="access-text">毎週火曜日・第3水曜日</p>
+                </div>
+                
+                <div class="access-item">
+                    <p class="access-label">ACCESS</p>
+                    <p class="access-text">東急東横線・大井町線「自由が丘駅」正面口より徒歩3分</p>
+                </div>
+                
+                <div class="access-item">
+                    <p class="access-label">TEL</p>
+                    <p class="access-text">03-1234-5678</p>
+                </div>
+
+                <div class="access-item">
+                    <p class="access-label">PARKING</p>
+                    <p class="access-text">近隣コインパーキングをご利用ください（サービス券あり）</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="section-header">
+            <p class="section-label">RESERVATION</p>
+            <h2 class="section-title">ご予約・お問い合わせ</h2>
+        </div>
+
+        <form class="contact-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">お名前</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="tel">電話番号</label>
+                    <input type="tel" id="tel" name="tel">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">メールアドレス</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="stylist">ご希望のスタイリスト</label>
+                    <select id="stylist" name="stylist">
+                        <option value="">指名なし</option>
+                        <option value="aoyama">青山 優希</option>
+                        <option value="kobayashi">小林 美香</option>
+                        <option value="nakamura">中村 健</option>
+                        <option value="suzuki">鈴木 里奈</option>
+                        <option value="watanabe">渡辺 彩花</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="menu">ご希望のメニュー</label>
+                    <select id="menu" name="menu">
+                        <option value="">選択してください</option>
+                        <option value="cut">カット</option>
+                        <option value="color">カラー</option>
+                        <option value="cut-color">カット＋カラー</option>
+                        <option value="perm">パーマ</option>
+                        <option value="treatment">トリートメント</option>
+                        <option value="other">その他</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="date">ご希望日時（第1〜第3希望）</label>
+                <textarea id="date" name="date" placeholder="例）&#10;第1希望：2月10日（土）14:00頃&#10;第2希望：2月11日（日）11:00頃&#10;第3希望：2月17日（土）終日"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="message">その他ご要望</label>
+                <textarea id="message" name="message" placeholder="髪のお悩み、イメージしているスタイルなどあればお聞かせください"></textarea>
+            </div>
+            <button type="submit" class="btn-submit">予約リクエストを送信</button>
+        </form>
+    </section>
+
+    <footer>
+        <p class="footer-logo">hair salon KOMOREBI</p>
+        <p class="footer-copy">© 2024 KOMOREBI. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Card hover effect
+        document.querySelectorAll('.stylist-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
