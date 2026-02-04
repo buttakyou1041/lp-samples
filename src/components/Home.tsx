@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useEffect } from 'react';
 import { Seo } from './seo/Seo';
-import { OrganizationJsonLd, WebsiteJsonLd, WebPageJsonLd, FAQJsonLd, ServiceJsonLd } from './seo/JsonLd';
+import { OrganizationJsonLd, WebsiteJsonLd, WebPageJsonLd, FAQJsonLd, ServiceJsonLd, ProfilePageJsonLd } from './seo/JsonLd';
 import { PAGE_SEO } from '@/config/seo';
 
 export default function Home() {
@@ -95,6 +95,7 @@ export default function Home() {
       <WebPageJsonLd title={seo.title} description={seo.description} path={seo.path} />
       <FAQJsonLd items={faqItems} />
       <ServiceJsonLd services={serviceItems} />
+      <ProfilePageJsonLd />
 
       <div className="min-h-screen bg-white">
         {/* Navigation */}

@@ -162,3 +162,104 @@ export function ServiceJsonLd({ services }: { services: ServiceItem[] }) {
     </Helmet>
   );
 }
+
+// Person Schema (E-E-A-T: 経験・専門性・権威性・信頼性を強化)
+interface PersonJsonLdProps {
+  name: string;
+  jobTitle: string;
+  description: string;
+  knowsAbout?: string[];
+  hasCredential?: string[];
+  worksFor?: string;
+}
+
+export function PersonJsonLd({
+  name,
+  jobTitle,
+  description,
+  knowsAbout = [],
+  hasCredential = [],
+  worksFor,
+}: PersonJsonLdProps) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: name,
+    jobTitle: jobTitle,
+    description: description,
+    url: SITE_CONFIG.siteUrl,
+    knowsAbout: knowsAbout,
+    hasCredential: hasCredential.map((credential) => ({
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'certification',
+      name: credential,
+    })),
+    ...(worksFor && {
+      worksFor: {
+        '@type': 'Organization',
+        name: worksFor,
+      },
+    }),
+  };
+
+  return (
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+    </Helmet>
+  );
+}
+
+// ProfilePage Schema (著者ページとしてのSEO強化)
+export function ProfilePageJsonLd() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    mainEntity: {
+      '@type': 'Person',
+      name: 'Naoki Imuta',
+      jobTitle: 'ITコンサルタント / プロジェクトマネージャー',
+      description:
+        'LP制作、IT顧問、AI活用支援を提供。PM歴5年以上、15社以上の支援実績、最大353人月規模のプロジェクト経験。',
+      knowsAbout: [
+        'LP制作',
+        'Webデザイン',
+        'UX/UIデザイン',
+        'SEO対策',
+        'デジタルマーケティング',
+        'IT顧問',
+        'AI活用支援',
+        'プロジェクトマネジメント',
+        'Webエンジニアリング',
+        'ChatGPT',
+        'Claude',
+        'gemini',
+        '業務改善',
+        '業務システム開発',
+        'アプリ開発',
+        'iOS',
+        'Android',
+        '運用支援',
+        'ITコンサルティング',
+        'システム導入支援',
+      ],
+      hasCredential: [
+        {
+          '@type': 'EducationalOccupationalCredential',
+          credentialCategory: 'certification',
+          name: '応用情報技術者',
+        },
+        {
+          '@type': 'EducationalOccupationalCredential',
+          credentialCategory: 'certification',
+          name: 'データベーススペシャリスト',
+        },
+      ],
+    },
+  };
+
+  return (
+    <Helmet>
+      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+    </Helmet>
+  );
+}
