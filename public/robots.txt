@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lp-samples-k4ul.vercel.app/sitemap.xml

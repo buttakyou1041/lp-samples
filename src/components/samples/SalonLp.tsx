@@ -2,6 +2,9 @@ import { Link } from 'react-router';
 import { ArrowLeft, MapPin, Clock, Phone, Heart, MessageCircle } from 'lucide-react';
 import { ImageWithFallback } from '../figma/ImageWithFallback';
 import { useEffect } from 'react';
+import { Seo } from '../seo/Seo';
+import { BreadcrumbJsonLd, WebPageJsonLd } from '../seo/JsonLd';
+import { PAGE_SEO } from '@/config/seo';
 import salonImg1 from "figma:asset/0f0f9e678230d37ef826d45b6ae4369611bb89bb.png";
 import salonImg2 from "figma:asset/695fdd55755c763c188dcd53e4001606e7a0f903.png";
 import salonImg3 from "figma:asset/093f1a26d0e31509149e9389c260387993eb2fa2.png";
@@ -13,6 +16,8 @@ import salonImg8 from "figma:asset/1f3836ef93d7b784f9fd59f4b675c3003311c4a3.png"
 import salonImg9 from "figma:asset/a2aae70ee0551d7e99e9af544b78028753d84a91.png";
 
 export default function SalonLp() {
+  const seo = PAGE_SEO.salon;
+
   // Scroll to top on component mount
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -58,8 +63,19 @@ export default function SalonLp() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FAFAF8]">
-      {/* Back Button */}
+    <>
+      <Seo {...seo} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'ホーム', url: '/' },
+          { name: '制作サンプル', url: '/#works' },
+          { name: '美容室LP', url: '/samples/salon' },
+        ]}
+      />
+      <WebPageJsonLd title={seo.title} description={seo.description} path={seo.path} />
+
+      <div className="min-h-screen bg-[#FAFAF8]">
+        {/* Back Button */}
       <div className="fixed top-4 left-4 z-50">
         <Link 
           to="/"
@@ -313,6 +329,7 @@ export default function SalonLp() {
           <p className="text-white/60 text-sm">© 2026 hair salon KOMOREBI. All rights reserved.</p>
         </div>
       </footer>
-    </div>
+      </div>
+    </>
   );
 }

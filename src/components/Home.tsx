@@ -3,8 +3,13 @@ import { Code2, MessageCircle, Brain, Database, Smartphone, Settings, ArrowRight
 import { motion } from 'motion/react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useEffect } from 'react';
+import { Seo } from './seo/Seo';
+import { OrganizationJsonLd, WebsiteJsonLd, WebPageJsonLd, FAQJsonLd, ServiceJsonLd } from './seo/JsonLd';
+import { PAGE_SEO } from '@/config/seo';
 
 export default function Home() {
+  const seo = PAGE_SEO.home;
+
   // Scroll to top on component mount
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -55,9 +60,44 @@ export default function Home() {
     }
   ];
 
+  // FAQ data for AI summaries
+  const faqItems = [
+    {
+      question: 'LP制作の費用はいくらですか？',
+      answer: 'LP制作は初期費用0円から、月額1万円でご提供しています。コンバージョンを最大化するプロフェッショナルなランディングページを制作します。',
+    },
+    {
+      question: 'IT顧問サービスとは何ですか？',
+      answer: 'IT顧問サービスでは、ベンダー選定、見積もり査定、技術的な意思決定をサポートします。月額5万円からご利用いただけます。',
+    },
+    {
+      question: 'AI活用支援ではどのようなサポートを受けられますか？',
+      answer: 'ChatGPTやClaudeの導入から、業務フローへの組み込みまでトータルでサポートします。月額3万円からご利用いただけます。',
+    },
+    {
+      question: '支援実績はどのくらいありますか？',
+      answer: '15社以上の支援実績があり、最大353人月規模のプロジェクト経験、PM歴5年以上の実績があります。',
+    },
+  ];
+
+  // Service data for structured data
+  const serviceItems = services.map((s) => ({
+    name: s.title,
+    description: s.description,
+    price: s.price,
+  }));
+
   return (
-    <div className="min-h-screen bg-white">
-      {/* Navigation */}
+    <>
+      <Seo {...seo} />
+      <OrganizationJsonLd />
+      <WebsiteJsonLd />
+      <WebPageJsonLd title={seo.title} description={seo.description} path={seo.path} />
+      <FAQJsonLd items={faqItems} />
+      <ServiceJsonLd services={serviceItems} />
+
+      <div className="min-h-screen bg-white">
+        {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-sm z-50">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
@@ -424,6 +464,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
-    </div>
+      </div>
+    </>
   );
 }

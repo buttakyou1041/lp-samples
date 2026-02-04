@@ -1,0 +1,11 @@
+{
+  "name": "ITコンサルタント",
+  "short_name": "IT Consultant",
+  "description": "LP制作、IT顧問、AI活用支援を提供するITコンサルタント",
+  "theme_color": "#3b82f6",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "lang": "ja",
+  "icons": []
+}

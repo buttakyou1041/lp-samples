@@ -1,16 +1,32 @@
 import { Link } from 'react-router';
 import { ArrowLeft, MapPin, Clock, Phone } from 'lucide-react';
 import { useEffect } from 'react';
+import { Seo } from '../seo/Seo';
+import { BreadcrumbJsonLd, WebPageJsonLd } from '../seo/JsonLd';
+import { PAGE_SEO } from '@/config/seo';
 
 export default function CoffeeLp() {
+  const seo = PAGE_SEO.coffee;
+
   // Scroll to top on component mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F5F0E8]">
-      {/* Back Button */}
+    <>
+      <Seo {...seo} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'ホーム', url: '/' },
+          { name: '制作サンプル', url: '/#works' },
+          { name: 'カフェLP', url: '/samples/coffee' },
+        ]}
+      />
+      <WebPageJsonLd title={seo.title} description={seo.description} path={seo.path} />
+
+      <div className="min-h-screen bg-[#F5F0E8]">
+        {/* Back Button */}
       <div className="fixed top-4 left-4 z-50">
         <Link 
           to="/"
@@ -252,6 +268,7 @@ export default function CoffeeLp() {
           <p className="text-white/60 text-sm">© 2026 SLOW DRIP COFFEE. All rights reserved.</p>
         </div>
       </footer>
-    </div>
+      </div>
+    </>
   );
 }

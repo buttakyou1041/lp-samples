@@ -2,6 +2,9 @@ import { Link } from 'react-router';
 import { ArrowLeft, Youtube, Mail } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useEffect, useState } from 'react';
+import { Seo } from '../seo/Seo';
+import { BreadcrumbJsonLd, WebPageJsonLd } from '../seo/JsonLd';
+import { PAGE_SEO } from '@/config/seo';
 import eldoImage from 'figma:asset/7d31c4a62fda21eb261478c4122dfbab240870a2.png';
 import lieselotteImage from 'figma:asset/66df6cb7246f232f86137f479122d3cd7d908d76.png';
 import kainaImage from 'figma:asset/8d14c8d68e19f3e3b10d681327c403b0e3003fab.png';
@@ -10,6 +13,7 @@ import keyVisualWide from 'figma:asset/33cbff5decd9b54b7b0eecac97661b496dbedb79.
 import keyVisualSquare from 'figma:asset/f89bb7359fe7202cbd7231ba8af6ea6e59e0600b.png';
 
 export default function AnimeLp() {
+  const seo = PAGE_SEO.anime;
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   // Scroll to top on component mount
@@ -64,8 +68,19 @@ export default function AnimeLp() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      {/* Particle Effects */}
+    <>
+      <Seo {...seo} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'ホーム', url: '/' },
+          { name: '制作サンプル', url: '/#works' },
+          { name: 'アニメティザーLP', url: '/samples/anime' },
+        ]}
+      />
+      <WebPageJsonLd title={seo.title} description={seo.description} path={seo.path} />
+
+      <div className="min-h-screen bg-black text-white relative overflow-hidden">
+        {/* Particle Effects */}
       <div className="fixed inset-0 pointer-events-none">
         {[...Array(50)].map((_, i) => {
           const randomX = Math.random() * 100;
@@ -507,6 +522,7 @@ export default function AnimeLp() {
           </p>
         </div>
       </footer>
-    </div>
+      </div>
+    </>
   );
 }
