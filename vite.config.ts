@@ -67,6 +67,23 @@
     build: {
       target: 'esnext',
       outDir: 'build',
+      // Core Web Vitals 最適化
+      rollupOptions: {
+        output: {
+          // コード分割でINPを改善
+          manualChunks: {
+            // ベンダーライブラリを分離
+            'vendor-react': ['react', 'react-dom', 'react-router'],
+            'vendor-ui': ['motion', 'lucide-react'],
+            // 重いライブラリを分離
+            'vendor-charts': ['recharts'],
+          },
+        },
+      },
+      // 圧縮でLCPを改善
+      minify: 'esbuild',
+      // CSSをインライン化せず分離（キャッシュ効率向上）
+      cssCodeSplit: true,
     },
     server: {
       port: 3000,
